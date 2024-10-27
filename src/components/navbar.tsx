@@ -17,19 +17,19 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-6">
               <Link
                 href="/articles"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 Articles
               </Link>
               <Link
                 href="/about"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 Contact
               </Link>

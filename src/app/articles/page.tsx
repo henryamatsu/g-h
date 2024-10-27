@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search, Code2, Cpu, Sparkles } from "lucide-react";
 
 const allBlogPosts = [
   {
@@ -77,18 +78,60 @@ const allBlogPosts = [
   },
 ];
 
+const categories = [
+  { name: "Web Dev", icon: Code2, color: "text-primary" },
+  { name: "AI", icon: Sparkles, color: "text-accent" },
+  { name: "Robotics", icon: Cpu, color: "text-chart-3" },
+];
+
 export default function ArticlesPage() {
+  const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = allBlogPosts.filter(
-    (post) =>
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
-      ) ||
-      post.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  useEffect(() => {
+    const search = searchParams.get("search");
+    if (search) {
+      setSearchQuery(search);
+    }
+  }, [searchParams]);
+
+  const filteredPosts = allBlogPosts
+    .filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.tags.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
+        post.category.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      // If there's a search query, prioritize exact matches
+      if (searchQuery) {
+        const searchLower = searchQuery.toLowerCase();
+
+        // Check if category matches exactly
+        const aCategoryMatch = a.category.toLowerCase() === searchLower;
+        const bCategoryMatch = b.category.toLowerCase() === searchLower;
+
+        if (aCategoryMatch && !bCategoryMatch) return -1;
+        if (!aCategoryMatch && bCategoryMatch) return 1;
+
+        // Check if any tag matches exactly
+        const aTagMatch = a.tags.some(
+          (tag) => tag.toLowerCase() === searchLower
+        );
+        const bTagMatch = b.tags.some(
+          (tag) => tag.toLowerCase() === searchLower
+        );
+
+        if (aTagMatch && !bTagMatch) return -1;
+        if (!aTagMatch && bTagMatch) return 1;
+      }
+
+      // Default: maintain original order (by date)
+      return 0;
+    });
 
   return (
     <div className="min-h-screen">
@@ -101,6 +144,21 @@ export default function ArticlesPage() {
           <p className="text-lg text-muted-foreground mb-8 text-pretty">
             Explore all posts about web development, AI, and robotics.
           </p>
+
+          {/* Category Buttons */}
+          <div className="flex flex-wrap gap-4 mb-8">
+            {categories.map((category) => (
+              <Button
+                key={category.name}
+                variant="outline"
+                className="gap-2 bg-transparent"
+                onClick={() => setSearchQuery(category.name)}
+              >
+                <category.icon className={`h-4 w-4 ${category.color}`} />
+                {category.name}
+              </Button>
+            ))}
+          </div>
 
           {/* Search Bar */}
           <div className="relative mb-12">
@@ -126,7 +184,7 @@ export default function ArticlesPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {filteredPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.id}`}>
-                <Card className="group hover:border-primary/50 transition-colors h-full">
+                <Card className="group hover:border-primary/50 h-full">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary">{post.category}</Badge>
@@ -134,7 +192,7 @@ export default function ArticlesPage() {
                         {post.readTime}
                       </span>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    <CardTitle className="text-xl group-hover:text-primary">
                       {post.title}
                     </CardTitle>
                     <CardDescription className="text-sm text-muted-foreground">
@@ -186,19 +244,19 @@ export default function ArticlesPage() {
             <div className="flex gap-6">
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 Twitter
               </Link>
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 GitHub
               </Link>
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 RSS
               </Link>

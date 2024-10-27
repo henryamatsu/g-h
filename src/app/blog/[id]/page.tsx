@@ -93,10 +93,10 @@ export default async function BlogPost({
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <Link href="/">
+          <Link href="/articles">
             <Button>
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
+              Back to Articles
             </Button>
           </Link>
         </div>
@@ -109,7 +109,7 @@ export default async function BlogPost({
       {/* Article */}
       <article className="container mx-auto px-4 py-12 max-w-3xl">
         <Link
-          href="/"
+          href="/articles"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -144,18 +144,17 @@ export default async function BlogPost({
         </div>
 
         <div
-          className="prose prose-invert prose-lg max-w-none
-            prose-headings:text-foreground prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
-            prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:first-letter:text-2xl prose-p:first-letter:font-bold prose-p:first-letter:text-foreground
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-foreground prose-strong:font-semibold
-            prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
+          className="article-content text-lg
+            [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h2]:mt-6 [&_h2]:mb-6 [&_h2]:pb-3 [&_h2]:border-b [&_h2]:border-border
+            [&_p]:text-muted-foreground [&_p]:leading-relaxed [&_p:not(:last-child)]:mb-4
+            [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline
+            [&_strong]:text-foreground [&_strong]:font-semibold
+            [&_code]:text-accent [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         <div className="mt-16 pt-8 border-t border-border">
-          <Link href="/">
+          <Link href="/articles">
             <Button variant="outline" className="gap-2 bg-transparent">
               <ArrowLeft className="h-4 w-4" />
               Back to all articles

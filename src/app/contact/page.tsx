@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,43 +9,36 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Mail, Github, Twitter, Linkedin, Rss } from "lucide-react";
+import { User, Mail, Github, Twitter, Linkedin } from "lucide-react";
 
 const socialLinks = [
   {
-    name: "Email",
-    icon: Mail,
-    href: "mailto:hello@grievanceandham.com",
-    description: "Send me an email",
-    handle: "hello@grievanceandham.com",
-  },
-  {
-    name: "GitHub",
-    icon: Github,
-    href: "https://github.com",
-    description: "Check out my code",
-    handle: "@grievanceandham",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    href: "https://twitter.com",
-    description: "Follow me on Twitter",
-    handle: "@grievanceandham",
+    name: "Portfolio",
+    icon: User,
+    href: "https://henryamatsu.com/",
+    description: "Check out my porfolio",
+    handle: "henryamatsu.com",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/henryamatsu/",
     description: "Connect professionally",
-    handle: "grievanceandham",
+    handle: "Henry Matsumoto",
   },
   {
-    name: "RSS Feed",
-    icon: Rss,
-    href: "/rss.xml",
-    description: "Subscribe to updates",
-    handle: "RSS Feed",
+    name: "GitHub",
+    icon: Github,
+    href: "https://github.com/henryamatsu",
+    description: "Check out my code",
+    handle: "@henryamatsu",
+  },
+  {
+    name: "Twitter",
+    icon: Twitter,
+    href: "https://x.com/henryamatsu",
+    description: "Follow me on Twitter",
+    handle: "@henryamatsu",
   },
 ];
 
@@ -97,7 +92,7 @@ export default function ContactPage() {
               want to connect, I'd love to hear from you.
             </p>
             <Button asChild>
-              <a href="mailto:hello@grievanceandham.com">
+              <a href="mailto:henryamatsu@gmail.com">
                 <Mail className="h-4 w-4 mr-2" />
                 Send Email
               </a>
@@ -118,7 +113,13 @@ export default function ContactPage() {
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                Twitter
+                Portfolio
+              </Link>
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Linkedin
               </Link>
               <Link
                 href="#"
@@ -130,7 +131,7 @@ export default function ContactPage() {
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                RSS
+                Twitter
               </Link>
             </div>
           </div>

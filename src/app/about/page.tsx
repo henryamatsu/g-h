@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -8,9 +11,15 @@ export default function AboutPage() {
       <section className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
-            <Avatar className="h-32 w-32 border-4 border-border">
-              <AvatarImage src="/professional-profile.png" alt="Profile" />
-              <AvatarFallback className="text-3xl">GH</AvatarFallback>
+            <Avatar className="h-32 w-32 border-4 border-border object-cover rounded-full">
+              <AvatarImage
+                src="/professional-profile.png"
+                alt="Profile"
+                className="animate-fadeIn"
+              />
+              <AvatarFallback>
+                <User className="h-20 w-20" />
+              </AvatarFallback>
             </Avatar>
             <div className="flex-1">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -50,10 +53,16 @@ const categories = [
 ];
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleCategoryClick = (categoryName: string) => {
+    router.push(`/articles?search=${encodeURIComponent(categoryName)}`);
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container mx-auto px-12 py-8 md:py-12">
         <div className="max-w-3xl">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance leading-tight">
             A place to talk about{" "}
@@ -69,6 +78,7 @@ export default function Home() {
                 key={category.name}
                 variant="outline"
                 className="gap-2 bg-transparent"
+                onClick={() => handleCategoryClick(category.name)}
               >
                 <category.icon className={`h-4 w-4 ${category.color}`} />
                 {category.name}
@@ -84,7 +94,7 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
             <Link key={post.id} href={`/blog/${post.id}`}>
-              <Card className="group hover:border-primary/50 transition-colors h-full">
+              <Card className="group hover:border-primary/50 h-full">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{post.category}</Badge>
@@ -92,7 +102,7 @@ export default function Home() {
                       {post.readTime}
                     </span>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                  <CardTitle className="text-xl group-hover:text-primary">
                     {post.title}
                   </CardTitle>
                   <CardDescription className="text-sm text-muted-foreground">
@@ -134,19 +144,19 @@ export default function Home() {
             <div className="flex gap-6">
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 Twitter
               </Link>
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 GitHub
               </Link>
               <Link
                 href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 RSS
               </Link>
