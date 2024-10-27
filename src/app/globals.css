@@ -76,8 +76,7 @@
 @theme inline {
   /* Updated to modern Inter font for tech aesthetic */
   --font-sans: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", "Courier New",
-    monospace;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", "Courier New", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -119,6 +118,12 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  /* Only transition backgrounds and borders, NOT text colors to prevent flashing */
+  html,
+  html * {
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, fill 0.5s ease-in-out, stroke 0.5s
+      ease-in-out;
   }
   body {
     @apply bg-background text-foreground;

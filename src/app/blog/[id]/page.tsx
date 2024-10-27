@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 // Mock blog post data - in a real app this would come from a database or CMS
 const blogPosts = {
@@ -107,44 +106,6 @@ export default async function BlogPost({
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-balance">
-                <span className="text-primary">Grievance</span>
-                <span className="text-muted-foreground"> & </span>
-                <span className="text-accent">Ham</span>
-              </h1>
-            </Link>
-            <nav className="flex items-center gap-6">
-              <div className="hidden md:flex items-center gap-6">
-                <Link
-                  href="/"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Articles
-                </Link>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-              <ThemeToggle />
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Article */}
       <article className="container mx-auto px-4 py-12 max-w-3xl">
         <Link
@@ -186,7 +147,7 @@ export default async function BlogPost({
           className="prose prose-invert prose-lg max-w-none
             prose-headings:text-foreground prose-headings:font-bold prose-headings:tracking-tight
             prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
-            prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
+            prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:first-letter:text-2xl prose-p:first-letter:font-bold prose-p:first-letter:text-foreground
             prose-a:text-primary prose-a:no-underline hover:prose-a:underline
             prose-strong:text-foreground prose-strong:font-semibold
             prose-code:text-accent prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded"

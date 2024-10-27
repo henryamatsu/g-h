@@ -9,7 +9,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Cpu, Sparkles } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const blogPosts = [
   {
@@ -53,44 +52,6 @@ const categories = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-balance">
-                <span className="text-primary">Grievance</span>
-                <span className="text-muted-foreground"> & </span>
-                <span className="text-accent">Ham</span>
-              </h1>
-            </Link>
-            <nav className="flex items-center gap-6">
-              <div className="hidden md:flex items-center gap-6">
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Articles
-                </Link>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
-              <ThemeToggle />
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-3xl">
@@ -118,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* Blog Posts */}
-      <section className="container mx-auto px-4 py-12">
+      <section className="container mx-auto px-4 py-8">
         <h3 className="text-2xl font-bold mb-8">Latest Articles</h3>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
