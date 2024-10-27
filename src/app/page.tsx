@@ -1,14 +1,22 @@
-import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Code2, Cpu, Sparkles } from "lucide-react"
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Code2, Cpu, Sparkles } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const blogPosts = [
   {
     id: 1,
     title: "Building Scalable Web Applications with Next.js 16",
-    excerpt: "Exploring the latest features in Next.js 16 and how they improve performance and developer experience.",
+    excerpt:
+      "Exploring the latest features in Next.js 16 and how they improve performance and developer experience.",
     date: "2025-01-20",
     category: "Web Dev",
     tags: ["Next.js", "React", "Performance"],
@@ -17,7 +25,8 @@ const blogPosts = [
   {
     id: 2,
     title: "The Future of AI Agents in Software Development",
-    excerpt: "How AI-powered coding assistants are transforming the way we write and maintain code.",
+    excerpt:
+      "How AI-powered coding assistants are transforming the way we write and maintain code.",
     date: "2025-01-15",
     category: "AI",
     tags: ["AI", "LLMs", "Development"],
@@ -26,19 +35,20 @@ const blogPosts = [
   {
     id: 3,
     title: "Robotics and Computer Vision: A Practical Guide",
-    excerpt: "Understanding the fundamentals of computer vision and its applications in modern robotics.",
+    excerpt:
+      "Understanding the fundamentals of computer vision and its applications in modern robotics.",
     date: "2025-01-10",
     category: "Robotics",
     tags: ["Robotics", "Computer Vision", "Python"],
     readTime: "15 min read",
   },
-]
+];
 
 const categories = [
   { name: "Web Dev", icon: Code2, color: "text-primary" },
   { name: "AI", icon: Sparkles, color: "text-accent" },
   { name: "Robotics", icon: Cpu, color: "text-chart-3" },
-]
+];
 
 export default function Home() {
   return (
@@ -54,16 +64,28 @@ export default function Home() {
                 <span className="text-accent">Ham</span>
               </h1>
             </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Articles
-              </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </Link>
+            <nav className="flex items-center gap-6">
+              <div className="hidden md:flex items-center gap-6">
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Articles
+                </Link>
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -73,15 +95,20 @@ export default function Home() {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-3xl">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-balance leading-tight">
-            Exploring the intersection of <span className="text-primary">web development</span>,{" "}
-            <span className="text-accent">AI</span>, and <span className="text-chart-3">robotics</span>
+            A place to talk about{" "}
+            <span className="text-primary">pet-projects</span> and{" "}
+            <span className="text-accent">pet-peeves</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-            A place for pet-peeves and pet-projects
+            The personal ramblings of a software, AI, and robotics enthusiast.
           </p>
           <div className="flex flex-wrap gap-4">
             {categories.map((category) => (
-              <Button key={category.name} variant="outline" className="gap-2 bg-transparent">
+              <Button
+                key={category.name}
+                variant="outline"
+                className="gap-2 bg-transparent"
+              >
                 <category.icon className={`h-4 w-4 ${category.color}`} />
                 {category.name}
               </Button>
@@ -100,13 +127,21 @@ export default function Home() {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary">{post.category}</Badge>
-                    <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {post.readTime}
+                    </span>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">{post.title}</CardTitle>
-                  <CardDescription className="text-sm text-muted-foreground">{post.date}</CardDescription>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {post.date}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{post.excerpt}</p>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    {post.excerpt}
+                  </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {post.tags.map((tag) => (
                       <Badge key={tag} variant="outline" className="text-xs">
@@ -114,7 +149,10 @@ export default function Home() {
                       </Badge>
                     ))}
                   </div>
-                  <Button variant="ghost" className="gap-2 p-0 h-auto font-semibold text-primary">
+                  <Button
+                    variant="ghost"
+                    className="gap-2 p-0 h-auto font-semibold text-primary"
+                  >
                     Read more
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -129,15 +167,26 @@ export default function Home() {
       <footer className="border-t border-border mt-24">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 Grievance & Ham. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">
+              © 2025 Grievance & Ham. All rights reserved.
+            </p>
             <div className="flex gap-6">
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Twitter
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 GitHub
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 RSS
               </Link>
             </div>
@@ -145,5 +194,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
