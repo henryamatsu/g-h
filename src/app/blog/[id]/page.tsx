@@ -1,7 +1,8 @@
-import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Mock blog post data - in a real app this would come from a database or CMS
 const blogPosts = {
@@ -78,11 +79,15 @@ const blogPosts = {
       <p>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Quisque velit nisi, pretium ut lacinia in, elementum id enim.</p>
     `,
   },
-}
+};
 
-export default async function BlogPost({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
-  const post = blogPosts[id as keyof typeof blogPosts]
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const post = blogPosts[id as keyof typeof blogPosts];
 
   if (!post) {
     return (
@@ -97,7 +102,7 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -113,16 +118,28 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
                 <span className="text-accent">Ham</span>
               </h1>
             </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Articles
-              </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </Link>
+            <nav className="flex items-center gap-6">
+              <div className="hidden md:flex items-center gap-6">
+                <Link
+                  href="/"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Articles
+                </Link>
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -142,7 +159,9 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
           <Badge variant="secondary" className="mb-4">
             {post.category}
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance leading-tight">{post.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance leading-tight">
+            {post.title}
+          </h1>
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
@@ -188,15 +207,26 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
       <footer className="border-t border-border mt-24">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 Grievance & Ham. All rights reserved.</p>
+            <p className="text-sm text-muted-foreground">
+              © 2025 Grievance & Ham. All rights reserved.
+            </p>
             <div className="flex gap-6">
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Twitter
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 GitHub
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 RSS
               </Link>
             </div>
@@ -204,5 +234,5 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
         </div>
       </footer>
     </div>
-  )
+  );
 }
