@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/svg+xml" href="/ham.svg" />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider
@@ -38,6 +40,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
           <Analytics />
         </ThemeProvider>
       </body>

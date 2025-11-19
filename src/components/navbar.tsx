@@ -7,6 +7,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
+            <img src="/ham.svg" className="w-10" />
             <h1 className="text-2xl font-bold text-balance">
               <span className="text-primary">Grievance</span>
               <span className="text-muted-foreground"> & </span>

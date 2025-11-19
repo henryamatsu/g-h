@@ -100,43 +100,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border mt-24">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2025 Grievance & Ham. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Portfolio
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Linkedin
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                GitHub
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Twitter
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

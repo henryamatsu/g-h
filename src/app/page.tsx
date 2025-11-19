@@ -12,39 +12,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Cpu, Sparkles } from "lucide-react";
+import articlesData from "@/articles.json";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Building Scalable Web Applications with Next.js 16",
-    excerpt:
-      "Exploring the latest features in Next.js 16 and how they improve performance and developer experience.",
-    date: "2025-01-20",
-    category: "Web Dev",
-    tags: ["Next.js", "React", "Performance"],
-    readTime: "8 min read",
-  },
-  {
-    id: 2,
-    title: "The Future of AI Agents in Software Development",
-    excerpt:
-      "How AI-powered coding assistants are transforming the way we write and maintain code.",
-    date: "2025-01-15",
-    category: "AI",
-    tags: ["AI", "LLMs", "Development"],
-    readTime: "12 min read",
-  },
-  {
-    id: 3,
-    title: "Robotics and Computer Vision: A Practical Guide",
-    excerpt:
-      "Understanding the fundamentals of computer vision and its applications in modern robotics.",
-    date: "2025-01-10",
-    category: "Robotics",
-    tags: ["Robotics", "Computer Vision", "Python"],
-    readTime: "15 min read",
-  },
-];
+const blogPosts = Object.values(articlesData).sort((a, b) => b.id - a.id);
 
 const categories = [
   { name: "Web Dev", icon: Code2, color: "text-primary" },
@@ -133,37 +103,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border mt-24">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2025 Grievance & Ham. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                Twitter
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                GitHub
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                RSS
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

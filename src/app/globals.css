@@ -73,6 +73,23 @@
   --sidebar-ring: oklch(0.7 0.18 125);
 }
 
+ul,
+ol {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+li {
+  list-style-type: disc;
+}
+
+button {
+  cursor: pointer;
+}
+
 @theme inline {
   /* Updated to modern Inter font for tech aesthetic */
   --font-sans: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;

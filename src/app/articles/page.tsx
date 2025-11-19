@@ -14,69 +14,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Search, Code2, Cpu, Sparkles } from "lucide-react";
+import articlesData from "@/articles.json";
 
-const allBlogPosts = [
-  {
-    id: 1,
-    title: "Building Scalable Web Applications with Next.js 16",
-    excerpt:
-      "Exploring the latest features in Next.js 16 and how they improve performance and developer experience.",
-    date: "2025-01-20",
-    category: "Web Dev",
-    tags: ["Next.js", "React", "Performance"],
-    readTime: "8 min read",
-  },
-  {
-    id: 2,
-    title: "The Future of AI Agents in Software Development",
-    excerpt:
-      "How AI-powered coding assistants are transforming the way we write and maintain code.",
-    date: "2025-01-15",
-    category: "AI",
-    tags: ["AI", "LLMs", "Development"],
-    readTime: "12 min read",
-  },
-  {
-    id: 3,
-    title: "Robotics and Computer Vision: A Practical Guide",
-    excerpt:
-      "Understanding the fundamentals of computer vision and its applications in modern robotics.",
-    date: "2025-01-10",
-    category: "Robotics",
-    tags: ["Robotics", "Computer Vision", "Python"],
-    readTime: "15 min read",
-  },
-  {
-    id: 4,
-    title: "TypeScript Best Practices for Large Codebases",
-    excerpt:
-      "Essential patterns and practices for maintaining type safety in enterprise applications.",
-    date: "2025-01-05",
-    category: "Web Dev",
-    tags: ["TypeScript", "Best Practices", "Architecture"],
-    readTime: "10 min read",
-  },
-  {
-    id: 5,
-    title: "Machine Learning Model Deployment Strategies",
-    excerpt:
-      "A comprehensive guide to deploying ML models in production environments.",
-    date: "2024-12-28",
-    category: "AI",
-    tags: ["Machine Learning", "DevOps", "Production"],
-    readTime: "14 min read",
-  },
-  {
-    id: 6,
-    title: "Building Autonomous Navigation Systems",
-    excerpt:
-      "Deep dive into SLAM algorithms and path planning for mobile robots.",
-    date: "2024-12-20",
-    category: "Robotics",
-    tags: ["SLAM", "Navigation", "Algorithms"],
-    readTime: "18 min read",
-  },
-];
+const allBlogPosts = Object.values(articlesData);
 
 const categories = [
   { name: "Web Dev", icon: Code2, color: "text-primary" },
@@ -130,7 +70,7 @@ export default function ArticlesPage() {
       }
 
       // Default: maintain original order (by date)
-      return 0;
+      return b.id - a.id;
     });
 
   return (
@@ -233,37 +173,6 @@ export default function ArticlesPage() {
           )}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border mt-24">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2025 Grievance & Ham. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                Twitter
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                GitHub
-              </Link>
-              <Link
-                href="#"
-                className="text-sm text-muted-foreground hover:text-foreground"
-              >
-                RSS
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
